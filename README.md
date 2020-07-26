@@ -47,7 +47,42 @@ Features-
 
 ## Search Medicine Screen
 
-<img src="screenshots/Login.jpeg" width=350 height=650>
+<img src="screenshots/Search.jpeg" width=350 height=650>
+
+
+
+## Cart Screen
+
+<img src="screenshots/Cart.jpeg" width=350 height=650>
+
+
+
+## In-store orders Screen
+
+<img src="screenshots/My in-store orders.jpeg" width=350 height=650>
+
+
+
+## Out-store orders Screen
+
+<img src="screenshots/My out-store orders.jpeg" width=350 height=650>
+
+
+## Place order Screen
+
+<img src="screenshots/Place order.jpeg" width=350 height=650>
+
+
+
+## Buy Medicine Screen
+
+<img src="screenshots/Buy Medicine.jpeg" width=350 height=650>
+
+
+
+
+
+
 
 
 
