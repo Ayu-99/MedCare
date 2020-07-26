@@ -13,3 +13,41 @@ Features-
 9) User authentication- Firebase Authentication
 
 
+## Welcome Screen
+
+<img src="screenshots/Welcome.jpeg" width=350 height=650>
+
+
+## SignUp Screen
+
+<img src="screenshots/Register.jpeg" width=350 height=650>
+
+
+## Login Screen
+
+<img src="screenshots/Login.jpeg" width=350 height=650>
+
+
+## Dashboard Screen
+
+<img src="screenshots/Dashboard.jpeg" width=350 height=650>
+
+
+
+## Drawer Screen
+
+<img src="screenshots/Drawer.jpeg" width=350 height=650>
+
+
+
+## Medicine List Screen
+
+<img src="screenshots/Choose Medicine.jpeg" width=350 height=650>
+
+
+## Search Medicine Screen
+
+<img src="screenshots/Login.jpeg" width=350 height=650>
+
+
+
