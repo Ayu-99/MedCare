@@ -8,6 +8,9 @@ Features-
 4) User can order any medicine.
 5) User can also place an order.
 6) Payment Gateway integrated using RazorPay API.
+7) Database-Firebase Firestore.
+8) Cloud Storage- Firebase Storage.
+9) User authentication- Firebase Authentication
 
 
 
