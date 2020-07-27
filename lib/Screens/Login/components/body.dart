@@ -12,7 +12,9 @@ import 'package:medcare/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medcare/loading.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:medcare/constants.dart';
+import 'package:medcare/models/user.dart';
 
 class Body extends StatefulWidget {
   Body({
@@ -27,6 +29,7 @@ class _BodyState extends State<Body> {
   String email,pswd;
 
   bool loading=false;
+
 
   FirebaseAuth auth=FirebaseAuth.instance;
   final AuthService _auth=AuthService();
@@ -60,7 +63,7 @@ class _BodyState extends State<Body> {
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {
+              press: () async{
                 if (email == null || email == "") {
                   Fluttertoast.showToast(
                       msg: "Email cannot be empty!!",
@@ -100,11 +103,15 @@ class _BodyState extends State<Body> {
                   dynamic result=_auth.signInWithEmailAndPassword(email, pswd);
 
 
-                  setState(() {
-                    loading=false;
-                  });
-//                  print("REsult"+result);
-                  if(result!=null){
+
+
+                  print("REsult: "+result.toString());
+                  if(await result!=null){
+                    setState(() {
+
+                      loading=false;
+
+                    });
 
                     Navigator.push(
                       context,
