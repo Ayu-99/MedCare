@@ -42,7 +42,6 @@ class AuthService{
       FirebaseUser user=authResult.user;
       print(user.isEmailVerified);
       if(user.isEmailVerified==true){
-        print("came here");
         return _userFromFirebase(user);
 
       }
@@ -52,7 +51,7 @@ class AuthService{
 
     }catch(e){
       print(e.toString());
-      return null;
+//      return null;
     }
   }
 
