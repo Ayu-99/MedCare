@@ -35,7 +35,7 @@ class AuthService{
   }
 
   //sign in with email and password
-  Future signInWithEmailAndPassword(String email,String password) async{
+  Future<User> signInWithEmailAndPassword(String email,String password) async{
     try{
 
       AuthResult authResult=await _auth.signInWithEmailAndPassword(email: email, password: password);
