@@ -27,11 +27,15 @@ class _MedicinesListState extends State<MedicinesList> {
   List<String> medicinesCategory = new List();
   List<String> medicinesUid = new List();
 
+  DatabaseService db=new DatabaseService();
+
   void uidOfUser() async {
     final FirebaseUser user = await auth.currentUser();
     uid1 = user.uid.toString();
     // here you write the codes to input the data into firestore
   }
+
+
 
   Future getMedicines() async {
     print("category uid" + widget.categoryName);

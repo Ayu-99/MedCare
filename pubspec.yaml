@@ -33,8 +33,10 @@ dependencies:
   cloud_firestore: ^0.12.9+4
   provider: ^3.1.0
   fluttertoast: ^7.0.1
+  firebase_storage: 3.0.8
   razorpay_flutter: ^1.1.1
   flutter_spinkit: "^4.0.0"
+  image_picker: "^0.5.3+1"
 
 dev_dependencies:
   flutter_test:

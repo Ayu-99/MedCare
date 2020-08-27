@@ -1,6 +1,6 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class DatabaseService{
 
@@ -9,8 +9,10 @@ class DatabaseService{
   //collection reference
   final CollectionReference categoryCollection=Firestore.instance.collection('category');
   final CollectionReference usersCollection =Firestore.instance.collection('users');
-
+  final CollectionReference discountsCollection=Firestore.instance.collection('discounts');
   final CollectionReference suggestionsCollection =Firestore.instance.collection('suggestions');
+  final CollectionReference medicineCollection =Firestore.instance.collection('medicines');
+
 
 
   Future updateUserData(String email) async{
@@ -28,10 +30,6 @@ class DatabaseService{
   Stream<QuerySnapshot> get Categories{
       return categoryCollection.snapshots();
   }
-//
-//  Future returnEmail() async{
-//    return await usersCollection.where(uid, isEqualTo: uid).getDocuments();
-//  }
 
   Future addToCart(String uidOfUser, String uidOfMedicine, String name, String price, String imageUrl, String category) async{
 
@@ -60,6 +58,7 @@ class DatabaseService{
 
       return await usersCollection.document(uidOfUser).collection('out-of-store-orders').document().setData({
 
+        "uid":uidOfUser,
         'name':name,
         'suffering':suffer,
         'quantity':quantity,
@@ -89,6 +88,7 @@ class DatabaseService{
         'multiplier':multiplier,
         'category':category,
         'status':'ACTIVE',
+        'uid':uidOfUser
       });
 
     }catch(e){
@@ -121,7 +121,6 @@ class DatabaseService{
   void uidOfUser() async {
     final FirebaseUser user = await auth.currentUser();
     uid1 = user.uid.toString();
-    // here you write the codes to input the data into firestore
   }
   Future getEmail () async{
     uidOfUser();
@@ -133,6 +132,7 @@ class DatabaseService{
   Future removeFromCart(String uid, String itemUid) async{
     try{
 
+
       return await usersCollection.document(uid).collection("cart").document(itemUid).delete();
 
 
@@ -142,5 +142,89 @@ class DatabaseService{
     }
   }
 
+
+  fetchDiscounts(){
+    return  discountsCollection.getDocuments();
+    }
+//    var result=await discountsCollection.snapshots();
+//    print(result);
+//    await result.forEach((element) async{
+//      await element.documents.asMap().forEach((key, value) {
+//
+//
+//        coupons.add(element.documents[key]["coupon"].toString());
+//        print(element.documents[key]["coupon"].toString());
+//
+//      });
+//
+//    });
+//
+//    print("hh"+coupons.toString());
+
+
+  Future addNewCategory(String name, String imageurl) async{
+
+    try{
+
+
+       return categoryCollection.add(
+          {
+            "imageUrl":imageurl,
+            "name":name
+          }
+      );
+
+
+    }catch(e){
+      print(e.toString());
+      return null;
+
+    }
+
+
+  }
+  Future addNewMedicine(String name, String imageurl, String price, String category) async{
+
+    try{
+
+
+      return medicineCollection.add(
+          {
+            "imageUrl":imageurl,
+            "name":name,
+            "category":category,
+            "price":price,
+
+          }
+      );
+
+
+    }catch(e){
+      print(e.toString());
+      return null;
+
+    }
+
+
+  }
+
+  getAllCategories(){
+    return categoryCollection.getDocuments();
+  }
+
+
+  Future getAllInStockOrders() async{
+    var result=await Firestore.instance.collectionGroup('in-store-orders').getDocuments();
+    return result.documents;
+
+  }
+  Future getAllOutStockOrders() async{
+    var result=await Firestore.instance.collectionGroup('out-of-store-orders').getDocuments();
+//    result.documents.forEach((element) {
+//      print(element["uid"]);
+//    });
+    return result.documents;
+
+  }
 
 }

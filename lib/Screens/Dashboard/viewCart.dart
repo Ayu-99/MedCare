@@ -14,7 +14,12 @@ class ViewCart extends StatefulWidget {
 class _ViewCartState extends State<ViewCart> {
   FirebaseAuth auth = FirebaseAuth.instance;
   DatabaseService db=new DatabaseService();
+  List<String> coupons=new List();
   String uid1;
+  @override
+  void initState() {
+    // TODO: implement initState
+  }
 
   Future getCartItems() async {
     var firestore = Firestore.instance;
@@ -27,6 +32,7 @@ class _ViewCartState extends State<ViewCart> {
         .getDocuments();
     return qn.documents;
   }
+
 
   @override
   Widget build(BuildContext context) {

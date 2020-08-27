@@ -22,7 +22,7 @@ class MainDrawer extends StatefulWidget {
 
 class _MainDrawerState extends State<MainDrawer> {
   DatabaseService db=new DatabaseService();
-  String title;
+  String title,email;
   SharedPreferences prefs;
   AuthService a=new AuthService();
 
@@ -30,20 +30,19 @@ class _MainDrawerState extends State<MainDrawer> {
 
 
   FirebaseAuth _auth=FirebaseAuth.instance;
-  String email;
   FirebaseUser user;
 
    getUid() async{
     user = await _auth.currentUser();
     this.email=user.email;
     print(this.email);
-
     return user;
   }
 
   @override
   void initState(){
     // TODO: implement initState
+
     print(getUid());
 
   }
@@ -110,7 +109,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     ),
 
                   ),
-                  Text("Hello user",
+                  Text(email,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,

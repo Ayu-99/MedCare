@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medcare/Admin/Screens/Dashboard.dart';
 import 'package:medcare/Screens/Dashboard/AboutScreen.dart';
 import 'package:medcare/Screens/Dashboard/MedicinesList.dart';
 import 'package:medcare/Screens/Dashboard/PlaceOrder.dart';
@@ -51,8 +52,12 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
 //    print(user);
     if (user == null) {
+
       return WelcomeScreen();
+
     } else {
+
+//      return DashBoard();
       return Home("");
     }
   }

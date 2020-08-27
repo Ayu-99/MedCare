@@ -130,10 +130,12 @@ class SelectCategory extends StatelessWidget {
     this.categoryUid = uid;
   }
 
+
   @override
   Widget build(BuildContext context) {
     return InkResponse(
       onTap: () {
+
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => MedicinesList(this.title),
         ));
