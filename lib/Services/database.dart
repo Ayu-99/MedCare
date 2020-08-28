@@ -146,20 +146,7 @@ class DatabaseService{
   fetchDiscounts(){
     return  discountsCollection.getDocuments();
     }
-//    var result=await discountsCollection.snapshots();
-//    print(result);
-//    await result.forEach((element) async{
-//      await element.documents.asMap().forEach((key, value) {
-//
-//
-//        coupons.add(element.documents[key]["coupon"].toString());
-//        print(element.documents[key]["coupon"].toString());
-//
-//      });
-//
-//    });
-//
-//    print("hh"+coupons.toString());
+
 
 
   Future addNewCategory(String name, String imageurl) async{

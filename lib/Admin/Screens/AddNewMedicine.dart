@@ -59,6 +59,10 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
         });
       }
     });
+
+    setState(() {
+
+    });
   }
 
   @override
@@ -84,172 +88,185 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
             ),
           ),
         ),
-        body: Center(
-          child: Container(
-            margin:
-                EdgeInsets.only(left: 50, top: 2.0, right: 50, bottom: 10.0),
-            child: Column(
-              children: [
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "Enter name of Medicine:",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please write name of category!!';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          name = value;
-                        },
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        "Enter price of Medicine:",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value.isEmpty) {
-                            return 'Please write price of category!!';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          price = value;
-                        },
-                      ),
-                      SizedBox(
-                        height: 25,
-                      ),
-                      Text(
-                        "Choose category of Medicine:",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      DropdownButton<String>(
-                        value: category,
-                        icon: Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: TextStyle(color: Colors.black),
-                        underline: Container(
-                          height: 2,
-                          color: Colors.black,
-                        ),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            category = newValue;
-                          });
-                        },
-                        items: categories.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
-                          );
-                        }).toList(),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            RaisedButton(
-                              onPressed: () async {
-                                await getImage();
-                                if (_image != null) {
-                                  Fluttertoast.showToast(
-                                      msg: "Image Added",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.BOTTOM,
-                                      timeInSecForIosWeb: 1,
-                                      backgroundColor: Colors.white,
-                                      textColor: Colors.black,
-                                      fontSize: 24.0);
-                                } else {
-                                  Fluttertoast.showToast(
-                                      msg: "Image Not Added",
-                                      toastLength: Toast.LENGTH_LONG,
-                                      gravity: ToastGravity.BOTTOM,
-                                      timeInSecForIosWeb: 1,
-                                      backgroundColor: Colors.white,
-                                      textColor: Colors.black,
-                                      fontSize: 24.0);
-                                }
-                              },
-                              child: Text("Add an image"),
-                            ),
 
-                            SizedBox(
-                              width: 8,
-                            ),
+        body: 
+        SingleChildScrollView(
+          child: Center(
+            child: Container(
+              margin:
+                  EdgeInsets.only(left: 50, top: 2.0, right: 50, bottom: 10.0),
+              child: Column(
+                children: [
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "Enter name of Medicine:",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please write name of category!!';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            name = value;
+                          },
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "Enter price of Medicine:",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        TextFormField(
+                          validator: (value) {
+                            if (value.isEmpty) {
+                              return 'Please write price of category!!';
+                            }
+                            return null;
+                          },
+                          onChanged: (value) {
+                            price = value;
+                          },
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Text(
+                          "Choose category of Medicine:",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        DropdownButton<String>(
+                          value: category,
+                          icon: Icon(Icons.arrow_downward),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.black,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              category = newValue;
+                            });
+                          },
+                          items: categories.map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RaisedButton(
+                                onPressed: () async {
+                                  await getImage();
+                                  if (_image != null) {
+                                    Fluttertoast.showToast(
+                                        msg: "Image Added",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: Colors.white,
+                                        textColor: Colors.black,
+                                        fontSize: 24.0);
+                                  } else {
+                                    Fluttertoast.showToast(
+                                        msg: "Image Not Added",
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: Colors.white,
+                                        textColor: Colors.black,
+                                        fontSize: 24.0);
+                                  }
+                                },
+                                child: Text("Add an image"),
+                              ),
 
-                            _image != null
-                                ? Icon(
-                                    Icons.check,
-                                    size: 25.0,
-                                  )
-                                : SizedBox(
-                                    width: 5,
-                                  ),
+                              SizedBox(
+                                width: 8,
+                              ),
+
+                              _image != null
+                                  ? Icon(
+                                      Icons.check,
+                                      size: 25.0,
+                                    )
+                                  : SizedBox(
+                                      width: 5,
+                                    ),
 //
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      RaisedButton(
-                        onPressed: () async {
-                          if (_formKey.currentState.validate()) {
-                            await uploadPicture();
-                            name=name[0].toUpperCase() + name.substring(1);
-                            category=category[0].toUpperCase() + category.substring(1);
-                            if(db.addNewMedicine(name,url,price,category)!=null){
-                              Fluttertoast.showToast(
-                                  msg: "Medicine Added",
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.white,
-                                  textColor: Colors.black,
-                                  fontSize: 24.0);
-                              name="";
-                              category="";
-                              price="";
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RaisedButton(
+                          onPressed: () async {
+                            if (_formKey.currentState.validate()) {
+                              await uploadPicture();
+                              name=name[0].toUpperCase() + name.substring(1);
+                              category=category[0].toUpperCase() + category.substring(1);
+                              if(db.addNewMedicine(name,url,price,category)!=null){
+                                Fluttertoast.showToast(
+                                    msg: "Medicine Added",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.white,
+                                    textColor: Colors.black,
+                                    fontSize: 24.0);
+                                name="";
+                                category="";
+                                price="";
+                              }else{
+                                Fluttertoast.showToast(
+                                    msg: "Medicine Not Added",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.white,
+                                    textColor: Colors.black,
+                                    fontSize: 24.0);
+                              }
                             }else{
                               Fluttertoast.showToast(
-                                  msg: "Medicine Not Added",
+                                  msg: "Medicine Not added",
                                   toastLength: Toast.LENGTH_LONG,
                                   gravity: ToastGravity.BOTTOM,
                                   timeInSecForIosWeb: 1,
@@ -257,29 +274,20 @@ class _AddNewMedicineState extends State<AddNewMedicine> {
                                   textColor: Colors.black,
                                   fontSize: 24.0);
                             }
-                          }else{
-                            Fluttertoast.showToast(
-                                msg: "Medicine Not added",
-                                toastLength: Toast.LENGTH_LONG,
-                                gravity: ToastGravity.BOTTOM,
-                                timeInSecForIosWeb: 1,
-                                backgroundColor: Colors.white,
-                                textColor: Colors.black,
-                                fontSize: 24.0);
-                          }
-                        },
-                        child: Text(
-                          "ADD",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
+                          },
+                          child: Text(
+                            "ADD",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));

@@ -52,11 +52,8 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<User>(context);
 //    print(user);
     if (user == null) {
-
       return WelcomeScreen();
-
     } else {
-
 //      return DashBoard();
       return Home("");
     }

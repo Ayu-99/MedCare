@@ -11,6 +11,9 @@ import 'package:medcare/Services/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:medcare/Services/database.dart';
 
+
+
+
 class MainDrawer extends StatefulWidget {
   MainDrawer(String email){
 //    this.email=db.getEmail(uid1);
@@ -22,7 +25,7 @@ class MainDrawer extends StatefulWidget {
 
 class _MainDrawerState extends State<MainDrawer> {
   DatabaseService db=new DatabaseService();
-  String title,email;
+  String title,email="";
   SharedPreferences prefs;
   AuthService a=new AuthService();
 
@@ -34,16 +37,17 @@ class _MainDrawerState extends State<MainDrawer> {
 
    getUid() async{
     user = await _auth.currentUser();
-    this.email=user.email;
+    email=user.email;
     print(this.email);
-    return user;
+    setState(() {});
+
   }
 
   @override
   void initState(){
     // TODO: implement initState
 
-    print(getUid());
+    getUid();
 
   }
   FirebaseAuth auth=FirebaseAuth.instance;
