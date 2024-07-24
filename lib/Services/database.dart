@@ -18,7 +18,7 @@ class DatabaseService{
     return await usersCollection.document(uid).setData(
       {
         'email':email,
-        'uid':uid,
+        'med_uid':uid,
       }
     );
 
@@ -39,7 +39,7 @@ class DatabaseService{
 
       return await usersCollection.document(uidOfUser).collection('cart').document(uidOfMedicine).setData(
           {
-            'uid':uidOfMedicine,
+            'med_uid':uidOfMedicine,
             'name':name,
             'price':price,
             'imageUrl':imageUrl,
